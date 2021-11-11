@@ -4,6 +4,7 @@ import (
 	"cloud.google.com/go/bigquery"
 	"database/sql/driver"
 	"io"
+	"fmt"
 )
 
 type resultSet struct {
@@ -31,7 +32,7 @@ func (b *bqRows) Next(dest []driver.Value) error {
 		return io.EOF
 	}
 	for i, bgValue := range b.rs.data[b.rs.num] {
-		dest[i] = bgValue
+		dest[i] = fmt.Sprintf("%+v",bgValue)
 	}
 	b.rs.num++
 	return nil
