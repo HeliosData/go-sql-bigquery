@@ -62,7 +62,7 @@ func bqValueToString(bgValue bigquery.Value) string {
 		for _, value := range values {
 			strSlice = append(strSlice, bqValueToString(value))
 		}
-		return strings.Join(strSlice, "")
+		return strings.Join(strSlice, " ")
 	// For Time
 	case civil.Time:
 		return bgValue.(civil.Time).String()
